@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Facebook账号购买 | FB-Mai.TOP - FB耐用号/广告号/BM/老号自动发货</title>
+    <meta name="description" content="专业提供 Facebook 账号购买服务 (FB-Mai.TOP)。精选 FB 耐用号、二解/三解广告号、BM 商务管理号、Facebook 老号及商城号。支持 2FA 双重验证，Cookies 登录，自动发货，跨境电商投流首选。">
+    <meta name="keywords" content="Facebook账号购买, FB账号批发, Facebook耐用号, FB广告号, BM购买, 脸书老号, Facebook二解号, FB商城号, 跨境电商账号">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        dark: '#000000',
+                        card: '#121212',
+                        // Facebook 品牌色
+                        fbBlue: '#1877F2',
+                        fbDark: '#0e4f9e',
+                        fbLight: '#4B9CFF',
+                        success: '#00A400'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 5px #1877F2, 0 0 10px #1877F2' },
+                            '50%': { boxShadow: '0 0 20px #4B9CFF, 0 0 30px #4B9CFF' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 科技蓝网格背景 */
+        .bg-tech {
+            background-color: #000000;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(24, 119, 242, 0.15) 0%, transparent 50%),
+                linear-gradient(rgba(24, 119, 242, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(24, 119, 242, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+        
+        .glass-card {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 渐变文字 */
+        .text-gradient {
+            background: linear-gradient(to right, #1877F2, #4B9CFF, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-dark text-white font-sans antialiased selection:bg-fbBlue selection:text-white bg-tech">
+
+    <nav class="sticky top-0 w-full z-50 glass-card border-x-0 border-t-0 bg-black/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2 group cursor-pointer">
+                    <div class="w-9 h-9 bg-fbBlue rounded-full flex items-center justify-center shadow-lg shadow-fbBlue/20 group-hover:scale-105 transition-transform">
+                        <span class="text-white font-black text-xl italic">f</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">FB-Mai<span class="text-fbBlue">.TOP</span></span>
+                </div>
+
+                <div class="hidden md:flex gap-8 text-sm font-bold tracking-wide text-gray-400">
+                    <a href="#products" class="hover:text-white transition-colors">FB 账号</a>
+                    <a href="#ads" class="text-fbLight hover:text-white transition-colors">广告号/BM</a>
+                    <a href="#marketplace" class="hover:text-white transition-colors">商城/Marketplace</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <a href="/go/buy-fb" rel="nofollow sponsored noopener noreferrer" class="hidden md:flex items-center gap-2 bg-white text-fbBlue px-6 py-2 rounded-full text-sm font-black hover:bg-gray-100 transition-all shadow-[0_0_15px_rgba(24,119,242,0.3)]">
+                        <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                        立即购买
+                    </a>
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-300">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-card border-b border-white/10 absolute w-full">
+            <div class="grid grid-cols-1 p-4 gap-2">
+                <a href="#products" class="block p-3 text-center rounded bg-white/5 text-sm font-bold">Facebook 账号选购</a>
+                <a href="/go/buy-fb" rel="nofollow sponsored noopener noreferrer" class="block p-3 text-center rounded bg-fbBlue text-white text-sm font-black">前往商店</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-20 pb-24 lg:pt-32 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                
+                <div class="flex-1 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fbBlue/10 border border-fbBlue/20 text-fbBlue text-xs font-bold mb-6 uppercase tracking-widest">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-fbBlue opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-fbBlue"></span>
+                        </span>
+                        Facebook 2026 投流风口
+                    </div>
+                    
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-[1.1]">
+                        Scale Your <br>
+                        <span class="text-gradient">Facebook Business</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-400 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                        跨境电商首选平台。提供 <strong class="text-white">FB耐用号</strong>、<strong class="text-white">二解/三解广告号</strong>、<strong class="text-white">BM商务管理</strong> 及 <strong class="text-white">年份老号</strong>。
+                        Cookies + 2FA 双重登录，秒速发货，安全无忧。
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#products" class="px-8 py-4 bg-fbBlue hover:bg-fbDark text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(24,119,242,0.4)]">
+                            浏览账号库存 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <div class="flex items-center justify-center gap-4 px-6 py-4 rounded-xl border border-white/10 bg-white/5 text-sm text-gray-400">
+                            <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-4 h-4 text-green-500"></i> Cookies登录</span>
+                            <span class="w-px h-4 bg-white/10"></span>
+                            <span class="flex items-center gap-1"><i data-lucide="lock" class="w-4 h-4 text-fbLight"></i> 2FA 验证</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 relative w-full max-w-md lg:max-w-full animate-float hidden md:block">
+                    <div class="glass-card rounded-3xl p-6 relative z-10 border-t border-fbBlue/30">
+                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                                <div>
+                                    <div class="h-3 w-24 bg-gray-700 rounded mb-1"></div>
+                                    <div class="h-2 w-16 bg-gray-800 rounded"></div>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-500 text-xs font-bold rounded-full">Active</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-white/5 rounded-xl p-4">
+                                <div class="text-xs text-gray-400 mb-1">Reach</div>
+                                <div class="text-xl font-bold text-white">1.2M+</div>
+                                <div class="text-xs text-green-500 mt-1 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3"></i> +12%</div>
+                            </div>
+                            <div class="bg-white/5 rounded-xl p-4">
+                                <div class="text-xs text-gray-400 mb-1">Ads Spend</div>
+                                <div class="text-xl font-bold text-white">$8,540</div>
+                                <div class="text-xs text-fbBlue mt-1">Last 7 days</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-black/40 rounded-xl p-3 flex items-center gap-3 border border-white/5">
+                            <div class="w-12 h-12 bg-fbBlue/20 rounded-lg flex items-center justify-center">
+                                <i data-lucide="megaphone" class="w-6 h-6 text-fbBlue"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Business Manager (BM)</div>
+                                <div class="text-xs text-gray-500">Verified & Reinstated</div>
+                            </div>
+                            <div class="ml-auto px-3 py-1 bg-fbBlue text-white text-xs font-bold rounded">Buy</div>
+                        </div>
+                    </div>
+                    <div class="absolute -inset-4 bg-fbBlue/30 rounded-3xl blur-2xl opacity-30 -z-10"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-20 relative bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-white italic tracking-tighter uppercase">
+                    FACEBOOK <span class="text-fbBlue">Store</span>
+                </h2>
+                <div class="w-24 h-1 bg-fbBlue mx-auto mt-4 mb-4"></div>
+                <p class="text-gray-400">
+                    官方一手资源 · 自动发货 · 售后保障
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start mb-16">
+                
+                <div class="group relative bg-[#111] border border-gray-800 rounded-2xl overflow-hidden hover:border-gray-600 transition-all duration-300 flex flex-col">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-xs font-bold rounded uppercase">入门首选</span>
+                            <i data-lucide="zap" class="w-5 h-5 text-gray-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">FB 随机IP 新号</h3>
+                        <div class="h-px w-full bg-gray-800 my-4"></div>
+                        <ul class="space-y-3 text-sm text-gray-400 mb-6">
+                            <li class="flex items-center gap-2"><span class="text-gray-600">●</span> 2024年 手机注册</li>
+                            <li class="flex items-center gap-2"><span class="text-gray-600">●</span> 随机 IP (多国混合)</li>
+                            <li class="flex items-center gap-2"><span class="text-gray-600">●</span> 无邮箱 (手机验证)</li>
+                            <li class="flex items-center gap-2"><span class="text-gray-600">●</span> 适合批量/消耗品</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto bg-[#1a1a1a] p-6 border-t border-gray-800 text-center group-hover:bg-[#222] transition-colors">
+                        <div class="text-sm text-gray-500 mb-1">低至</div>
+                        <div class="text-4xl font-black text-white mb-4">¥24.00</div>
+                        <a href="/go/buy-fb" rel="nofollow sponsored noopener noreferrer" class="block w-full py-3 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-all">
+                            立即购买
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group relative bg-[#0a101a] border-2 border-fbBlue rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(24,119,242,0.15)] transform md:-translate-y-4 flex flex-col z-10">
+                    <div class="bg-fbBlue text-white text-center text-xs font-black uppercase py-2 tracking-widest">
+                        ★ 店长推荐 / Best Value ★
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-fbBlue/20 text-fbBlue text-xs font-bold rounded uppercase">性价比之王</span>
+                            <i data-lucide="thumbs-up" class="w-6 h-6 text-fbBlue"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">FB 真人老号</h3>
+                        <p class="text-xs text-fbBlue font-bold mb-4">东南亚本土 IP (印/菲/越)</p>
+                        <div class="h-px w-full bg-fbBlue/20 my-4"></div>
+                        <ul class="space-y-4 text-sm text-gray-300 mb-6">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-fbBlue"></i> <strong>真实年份老号 (抗封)</strong></li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-fbBlue"></i> <strong>自带活跃记录</strong></li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-fbBlue"></i> 2FA 双重验证保护</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-fbBlue"></i> 适合主号/长期运营</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto bg-fbBlue p-6 text-center hover:bg-fbDark transition-colors">
+                        <div class="text-sm text-blue-200 mb-1">限时特惠</div>
+                        <div class="text-5xl font-black text-white mb-4">¥88.00</div>
+                        <a href="/go/buy-fb" rel="nofollow sponsored noopener noreferrer" class="block w-full py-3.5 bg-white text-fbBlue font-black rounded-lg hover:shadow-lg transition-all uppercase tracking-wide">
+                            立即抢购
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group relative bg-[#111] border border-gray-800 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 flex flex-col">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-xs font-bold rounded uppercase">自带流量</span>
+                            <i data-lucide="trending-up" class="w-5 h-5 text-purple-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">FB 千粉成品号</h3>
+                        <div class="h-px w-full bg-gray-800 my-4"></div>
+                        <ul class="space-y-3 text-sm text-gray-400 mb-6">
+                            <li class="flex items-center gap-2"><span class="text-purple-500">●</span> <strong>1000+ 粉丝基础</strong></li>
+                            <li class="flex items-center gap-2"><span class="text-purple-500">●</span> 可直接用于推广引流</li>
+                            <li class="flex items-center gap-2"><span class="text-purple-500">●</span> 包含 2FA + 邮箱权限</li>
+                            <li class="flex items-center gap-2"><span class="text-purple-500">●</span> 另有真人千粉 (¥150)</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto bg-[#1a1a1a] p-6 border-t border-gray-800 text-center group-hover:bg-[#1a0f1a] transition-colors">
+                        <div class="text-sm text-gray-500 mb-1">起步价</div>
+                        <div class="text-4xl font-black text-white mb-4">¥110.00</div>
+                        <a href="/go/buy-fb" rel="nofollow sponsored noopener noreferrer" class="block w-full py-3 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-lg transition-all">
+                            购买粉号
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="flex items-center p-6 bg-[#0a0f0a] border border-green-900/50 rounded-xl hover:border-green-500/50 transition-all group">
+                    <div class="w-16 h-16 rounded-lg bg-green-500/10 flex items-center justify-center shrink-0 mr-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="package" class="w-8 h-8 text-green-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="text-lg font-bold text-white mb-1">APP 安装包 + 账号</h4>
+                        <p class="text-xs text-gray-500 mb-2">含 Facebook 安卓安装包。解决下载难题。</p>
+                        <div class="text-2xl font-black text-green-500">¥28.80</div>
+                    </div>
+                    <a href="/go/buy-fb" rel="nofollow sponsored noopener noreferrer" class="px-6 py-2 bg-green-600 hover:bg-green-500 text-white text-xs font-bold rounded-lg transition-all">
+                        下载
+                    </a>
+                </div>
+
+                <div class="flex items-center p-6 bg-[#0a0a15] border border-blue-900/50 rounded-xl hover:border-fbBlue/50 transition-all group">
+                    <div class="w-16 h-16 rounded-lg bg-fbBlue/10 flex items-center justify-center shrink-0 mr-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="store" class="w-8 h-8 text-fbBlue"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="text-lg font-bold text-white mb-1">商城号 (Marketplace)</h4>
+                        <p class="text-xs text-gray-500 mb-2">已开通商城权限。跨境电商引流必备。</p>
+                        <div class="text-2xl font-black text-white">¥69.00</div>
+                    </div>
+                    <a href="/go/buy-fb" rel="nofollow sponsored noopener noreferrer" class="px-6 py-2 bg-fbBlue hover:bg-fbLight text-white text-xs font-bold rounded-lg transition-all">
+                        购买
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-16 bg-black border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-white">Why FB-Mai?</h2>
+                <p class="text-gray-500 mt-2">专为 FB 营销人打造的顶级资源</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-8 rounded-3xl flex flex-col items-center text-center hover:border-fbBlue/50 transition-all">
+                    <div class="w-16 h-16 rounded-full bg-fbBlue/10 flex items-center justify-center mb-6">
+                        <i data-lucide="cookie" class="w-8 h-8 text-fbBlue"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Cookies 安全登录</h3>
+                    <p class="text-sm text-gray-400">提供完整 Cookies 数据。导入浏览器即可免密登录，极大降低异地登录封号风险。</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl flex flex-col items-center text-center hover:border-green-500/50 transition-all">
+                    <div class="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mb-6">
+                        <i data-lucide="lock" class="w-8 h-8 text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">2FA 双重验证</h3>
+                    <p class="text-sm text-gray-400">账号均已绑定 2FA。提供 32 位密钥，可生成实时验证码，确保账号绝对安全。</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl flex flex-col items-center text-center hover:border-fbLight/50 transition-all">
+                    <div class="w-16 h-16 rounded-full bg-fbLight/10 flex items-center justify-center mb-6">
+                        <i data-lucide="headphones" class="w-8 h-8 text-fbLight"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">专业售后支持</h3>
+                    <p class="text-sm text-gray-400">提供详细的登录教程（Cookies/2FA）。遇到首登问题，我们提供及时的售后协助。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-card border-t border-white/5">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="file-code" class="w-6 h-6 text-fbBlue"></i> 账号交付格式
+                    </h3>
+                    <p class="text-gray-400 text-sm mb-6">
+                        自动发货卡密格式如下，包含完整登录权限及 Cookies：
+                    </p>
+                    <div class="bg-black p-4 rounded-xl border border-white/10 font-mono text-xs text-fbLight break-all">
+                        ID---Password---2FA_Secret---Email---Email_Pass---Cookies
+                    </div>
+                </div>
+                <div class="w-full md:w-px h-px md:h-32 bg-white/10"></div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="shield-alert" class="w-6 h-6 text-green-500"></i> 登录提示
+                    </h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                            <span>强烈建议使用 Cookies 导入登录，不要直接输密码。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                            <span>登录后请静置 24 小时（养号），不要立即修改资料。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-black text-center border-t border-white/10">
+        <div class="flex items-center justify-center gap-2 mb-4 opacity-50">
+            <span class="font-black text-lg text-white">FB<span class="text-fbBlue">Mai</span></span>
+        </div>
+        <p class="text-xs text-gray-600">© 2026 FB-Mai.TOP Services. All rights reserved.</p>
+        <div class="flex justify-center gap-4 mt-4 text-xs text-gray-600">
+            <a href="#" class="hover:text-white">Privacy Policy</a>
+            <a href="#" class="hover:text-white">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile Menu
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
