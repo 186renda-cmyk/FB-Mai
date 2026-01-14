@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帮助中心 (Help Center) | FB-Mai.TOP</title>
+    <meta name="description" content="FB-Mai.TOP 帮助中心。提供购买指南、账号使用教程及常见问题解答。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: { sans: ['Inter', 'sans-serif'] },
+                extend: {
+                    colors: {
+                        dark: '#000000',
+                        card: '#121212',
+                        fbBlue: '#1877F2',
+                        fbDark: '#0e4f9e',
+                        fbLight: '#4B9CFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-tech {
+            background-color: #000000;
+            background-image: radial-gradient(circle at 50% 0%, rgba(24, 119, 242, 0.15) 0%, transparent 50%);
+        }
+        .glass-card {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-dark text-white font-sans antialiased bg-tech min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 w-full z-50 glass-card border-x-0 border-t-0 bg-black/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="flex items-center gap-2 group cursor-pointer">
+                    <div class="w-10 h-10 bg-fbBlue rounded-xl flex items-center justify-center shadow-lg shadow-fbBlue/20">
+                        <span class="text-white font-black text-lg tracking-tighter">FM</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">FB-Mai<span class="text-fbBlue">.TOP</span></span>
+                </a>
+                <a href="/#products" class="hidden md:flex items-center gap-2 bg-white text-fbBlue px-6 py-2 rounded-full text-sm font-black hover:bg-gray-100 transition-all">
+                    立即购买
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="flex-grow py-12 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Breadcrumb -->
+            <nav class="flex mb-8 text-sm" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="/" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="home" class="w-4 h-4 mr-2"></i>
+                            首页
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-gray-600"></i>
+                            <span class="ml-1 text-gray-500 md:ml-2">帮助中心</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-black text-white mb-6">我们如何提供帮助？</h1>
+                <div class="max-w-xl mx-auto relative">
+                    <input type="text" placeholder="搜索问题..." class="w-full bg-white/10 border border-white/10 rounded-full py-4 px-6 text-white placeholder-gray-500 focus:outline-none focus:border-fbBlue transition-colors">
+                    <i data-lucide="search" class="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-3xl hover:border-fbBlue/50 transition-all cursor-pointer group">
+                    <div class="w-12 h-12 bg-fbBlue/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shopping-bag" class="w-6 h-6 text-fbBlue"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">购买指南</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4">了解如何下单、支付方式以及如何接收您的卡密信息。</p>
+                    <a href="#" class="text-fbBlue text-sm font-bold flex items-center gap-1">阅读更多 <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-3xl hover:border-green-500/50 transition-all cursor-pointer group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">账号安全</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4">学习如何使用 Cookies 登录、设置 2FA 双重验证以及防封号技巧。</p>
+                    <a href="#" class="text-green-500 text-sm font-bold flex items-center gap-1">阅读更多 <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-3xl hover:border-purple-500/50 transition-all cursor-pointer group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="life-buoy" class="w-6 h-6 text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">售后服务</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4">遇到问题了？查看我们的退款政策、更换流程以及如何联系人工客服。</p>
+                    <a href="#" class="text-purple-500 text-sm font-bold flex items-center gap-1">阅读更多 <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick FAQ -->
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-white mb-8 text-center">热门问题</h2>
+                <div class="space-y-4">
+                    <div class="glass-card rounded-xl p-6 border border-white/5 hover:bg-white/5 transition-colors cursor-pointer">
+                        <h4 class="font-bold text-white mb-2">我没有收到卡密邮件怎么办？</h4>
+                        <p class="text-sm text-gray-400">请先检查您的垃圾邮件箱。如果仍未收到，请凭订单号联系我们的在线客服。</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6 border border-white/5 hover:bg-white/5 transition-colors cursor-pointer">
+                        <h4 class="font-bold text-white mb-2">如何使用 Cookies 登录？</h4>
+                        <p class="text-sm text-gray-400">请下载 EditThisCookie 插件，将卡密中的 Cookies 代码导入浏览器即可。</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6 border border-white/5 hover:bg-white/5 transition-colors cursor-pointer">
+                        <h4 class="font-bold text-white mb-2">账号购买后可以修改密码吗？</h4>
+                        <p class="text-sm text-gray-400">建议在稳定登录 24-48 小时后再修改密码和辅助邮箱，以免触发风控。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div>
+                    <a href="/" class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-fbBlue rounded-xl flex items-center justify-center">
+                            <span class="text-white font-black text-lg tracking-tighter">FM</span>
+                        </div>
+                        <span class="text-xl font-bold text-white tracking-tight">FB-Mai<span class="text-fbBlue">.TOP</span></span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        专业 Facebook 账号服务商。提供高质量耐用号、广告号及 BM 商务管理账号，助力跨境电商出海。
+                    </p>
+                </div>
+
+                <!-- Products -->
+                <div>
+                    <h3 class="text-white font-bold mb-6">产品服务</h3>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="/#products" class="hover:text-fbBlue transition-colors">所有账号</a></li>
+                        <li><a href="/#ads" class="hover:text-fbBlue transition-colors">广告号 & BM</a></li>
+                        <li><a href="/#marketplace" class="hover:text-fbBlue transition-colors">商城号</a></li>
+                        <li><a href="/#products" class="hover:text-fbBlue transition-colors">FB 老号</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="text-white font-bold mb-6">客户支持</h3>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="help.html" class="hover:text-fbBlue transition-colors">帮助中心</a></li>
+                        <li><a href="/#faq-container" class="hover:text-fbBlue transition-colors">常见问题</a></li>
+                        <li><a href="blog/index.html" class="hover:text-fbBlue transition-colors">运营博客</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h3 class="text-white font-bold mb-6">条款与政策</h3>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="privacy-policy.html" class="hover:text-fbBlue transition-colors">隐私政策</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-fbBlue transition-colors">服务条款</a></li>
+                        <li><a href="refund-policy.html" class="hover:text-fbBlue transition-colors">退款政策</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-gray-600">© 2026 FB-Mai.TOP Services. All rights reserved.</p>
+                <p class="text-xs text-gray-700">
+                    本站与 Facebook Inc. 无关。Facebook 是 Facebook Inc. 的注册商标。
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

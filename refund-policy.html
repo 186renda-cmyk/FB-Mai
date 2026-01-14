@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退款政策 (Refund Policy) | FB-Mai.TOP</title>
+    <meta name="description" content="FB-Mai.TOP 的退款政策。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: { sans: ['Inter', 'sans-serif'] },
+                extend: {
+                    colors: {
+                        dark: '#000000',
+                        card: '#121212',
+                        fbBlue: '#1877F2',
+                        fbDark: '#0e4f9e',
+                        fbLight: '#4B9CFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-tech {
+            background-color: #000000;
+            background-image: radial-gradient(circle at 50% 0%, rgba(24, 119, 242, 0.15) 0%, transparent 50%);
+        }
+        .prose h2 { color: white; font-weight: 700; margin-top: 2em; margin-bottom: 1em; font-size: 1.5rem; }
+        .prose p { color: #9ca3af; margin-bottom: 1em; line-height: 1.75; }
+        .prose ul { color: #9ca3af; margin-bottom: 1em; list-style-type: disc; padding-left: 1.5em; }
+        .glass-card {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-dark text-white font-sans antialiased bg-tech min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 w-full z-50 glass-card border-x-0 border-t-0 bg-black/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="flex items-center gap-2 group cursor-pointer">
+                    <div class="w-10 h-10 bg-fbBlue rounded-xl flex items-center justify-center shadow-lg shadow-fbBlue/20">
+                        <span class="text-white font-black text-lg tracking-tighter">FM</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">FB-Mai<span class="text-fbBlue">.TOP</span></span>
+                </a>
+                <a href="/#products" class="hidden md:flex items-center gap-2 bg-white text-fbBlue px-6 py-2 rounded-full text-sm font-black hover:bg-gray-100 transition-all">
+                    立即购买
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="flex-grow py-12 md:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Breadcrumb -->
+            <nav class="flex mb-8 text-sm" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="/" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="home" class="w-4 h-4 mr-2"></i>
+                            首页
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-gray-600"></i>
+                            <span class="ml-1 text-gray-500 md:ml-2">退款政策</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="glass-card rounded-3xl p-8 md:p-12">
+                <h1 class="text-3xl md:text-4xl font-black text-white mb-2">退款政策</h1>
+                <p class="text-sm text-gray-500 mb-8">最后更新日期：2026年1月1日</p>
+
+                <div class="prose max-w-none">
+                    <p>由于我们提供的产品具有虚拟商品和数字内容的特殊性（一旦发送即无法收回），因此我们的退款政策与实物商品有所不同。请在购买前仔细阅读以下条款。</p>
+
+                    <h2>1. 不支持退款的情况</h2>
+                    <p>在以下情况下，我们通常不提供退款服务：</p>
+                    <ul>
+                        <li><strong>改变主意：</strong> 您在购买后觉得不再需要该账号。</li>
+                        <li><strong>操作不当：</strong> 因您未按照我们的教程操作（如未清除浏览器缓存、IP 不纯净、立即修改密码等）导致账号被封。</li>
+                        <li><strong>购买错误：</strong> 您购买了错误类型的账号（例如想买广告号却买了耐用号），且账号信息已被您查看。</li>
+                        <li><strong>账号正常：</strong> 账号在质保期内状态正常，可以登录和使用。</li>
+                    </ul>
+
+                    <h2>2. 支持退款或更换的情况</h2>
+                    <p>在以下情况下，我们承诺为您全额退款或免费更换账号：</p>
+                    <ul>
+                        <li><strong>库存不足：</strong> 您付款后，我们发现所购商品缺货且无法在 24 小时内补货。</li>
+                        <li><strong>账号失效（质保期内）：</strong> 您在购买后 24 小时内首次登录时发现账号已被封禁、密码错误或 2FA 验证失败，且我们无法提供有效的替代账号。</li>
+                        <li><strong>发货错误：</strong> 我们向您发送了与描述严重不符的商品（例如承诺带商城功能但实际没有）。</li>
+                    </ul>
+
+                    <h2>3. 退款流程</h2>
+                    <p>如果您符合上述退款条件，请按照以下步骤申请：</p>
+                    <ul>
+                        <li>请在问题发生后的 24 小时内通过网站客服或邮件联系我们。</li>
+                        <li>提供您的订单号、支付截图以及账号问题的截图证据。</li>
+                        <li>我们的客服团队将在 12 小时内审核您的申请。审核通过后，退款将原路返回至您的支付账户，通常需要 1-3 个工作日到账。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div>
+                    <a href="/" class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-fbBlue rounded-xl flex items-center justify-center">
+                            <span class="text-white font-black text-lg tracking-tighter">FM</span>
+                        </div>
+                        <span class="text-xl font-bold text-white tracking-tight">FB-Mai<span class="text-fbBlue">.TOP</span></span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        专业 Facebook 账号服务商。提供高质量耐用号、广告号及 BM 商务管理账号，助力跨境电商出海。
+                    </p>
+                </div>
+
+                <!-- Products -->
+                <div>
+                    <h3 class="text-white font-bold mb-6">产品服务</h3>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="/#products" class="hover:text-fbBlue transition-colors">所有账号</a></li>
+                        <li><a href="/#ads" class="hover:text-fbBlue transition-colors">广告号 & BM</a></li>
+                        <li><a href="/#marketplace" class="hover:text-fbBlue transition-colors">商城号</a></li>
+                        <li><a href="/#products" class="hover:text-fbBlue transition-colors">FB 老号</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="text-white font-bold mb-6">客户支持</h3>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="help.html" class="hover:text-fbBlue transition-colors">帮助中心</a></li>
+                        <li><a href="/#faq-container" class="hover:text-fbBlue transition-colors">常见问题</a></li>
+                        <li><a href="blog/index.html" class="hover:text-fbBlue transition-colors">运营博客</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h3 class="text-white font-bold mb-6">条款与政策</h3>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="privacy-policy.html" class="hover:text-fbBlue transition-colors">隐私政策</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-fbBlue transition-colors">服务条款</a></li>
+                        <li><a href="refund-policy.html" class="hover:text-fbBlue transition-colors">退款政策</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-gray-600">© 2026 FB-Mai.TOP Services. All rights reserved.</p>
+                <p class="text-xs text-gray-700">
+                    本站与 Facebook Inc. 无关。Facebook 是 Facebook Inc. 的注册商标。
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
