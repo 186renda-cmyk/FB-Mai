@@ -162,8 +162,6 @@ def get_post_metadata(soup, filename):
     # Look for div with font-bold (usually contains meta)
     meta_div = soup.find('div', class_=re.compile(r'font-bold'))
     if meta_div:
-        # DEBUG
-        print(f"[{filename}] Found meta_div: {meta_div}")
         spans = meta_div.find_all('span')
         for s in spans:
             text = s.text.strip()
