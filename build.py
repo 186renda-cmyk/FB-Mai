@@ -151,6 +151,8 @@ def extract_nav_footer_favicon(index_soup):
             
     return nav, footer, favicons
 
+from datetime import datetime
+
 def get_post_metadata(soup, filename):
     # Default values
     title = soup.title.string if soup.title else filename
@@ -159,18 +161,40 @@ def get_post_metadata(soup, filename):
     description = ""
     
     # Try to find date/category
-    # Look for div with font-bold (usually contains meta)
-    meta_div = soup.find('div', class_=re.compile(r'font-bold'))
-    if meta_div:
-        spans = meta_div.find_all('span')
-        for s in spans:
-            text = s.text.strip()
-            # Check if it looks like a date
-            if re.match(r'\d{4}-\d{2}-\d{2}', text):
-                date = text
-            # Check if it looks like a category (not a dot, not empty, not the date)
-            elif text and text != '•' and not re.match(r'\d{4}-\d{2}-\d{2}', text):
-                category = text
+    # Improved strategy: Search for date pattern in text nodes directly
+    date_pattern = re.compile(r'\d{4}-\d{2}-\d{2}')
+    
+    # Limit search to main content area if possible to avoid false positives
+    search_area = soup.find('main') or soup.find('article') or soup.body
+    
+    if search_area:
+        # Find date
+        date_match = search_area.find(string=date_pattern)
+        if date_match:
+            date = date_match.strip()
+            
+        # Find category - usually near the date in a 'font-bold' container or similar
+        # Let's try to find the category span. In our template it's often in a flex container with the date.
+        # Strategy: Look for the date's parent, and see if there are other spans.
+        if date_match:
+            parent = date_match.parent
+            if parent and parent.name == 'span':
+                container = parent.parent
+                if container:
+                    # Find other spans in the same container that are NOT the date
+                    for s in container.find_all('span'):
+                        text = s.text.strip()
+                        if text and not re.match(r'\d{4}-\d{2}-\d{2}', text) and text != '•':
+                            category = text
+                            break
+    
+    # Fallback for category if not found above
+    if category == "Blog":
+        # Try looking for "新手教程" or similar keywords in spans
+        for keyword in ["新手教程", "运营干货", "FB政策", "实操指南"]:
+            if search_area and search_area.find(string=keyword):
+                category = keyword
+                break
             
     # Description
     meta_desc = soup.find('meta', attrs={'name': 'description'})
@@ -243,8 +267,68 @@ def create_article_card(soup, post):
     a.append(div_content)
     return a
 
+def process_content_links(soup):
+    """
+    Process all links in the soup:
+    1. External links: Add rel="nofollow noopener noreferrer" and target="_blank"
+    """
+    for a in soup.find_all('a', href=True):
+        href = a['href'].strip()
+        
+        # Skip empty or anchors
+        if not href or href.startswith('#') or href.startswith('javascript:'):
+            continue
+            
+        # External Links
+        if href.startswith('http://') or href.startswith('https://'):
+            # Check if it's actually external (not containing our domain)
+            if DOMAIN not in href:
+                # Add rel attributes
+                rel = a.get('rel', [])
+                if isinstance(rel, str):
+                    rel = rel.split()
+                
+                changed = False
+                for val in ['nofollow', 'noopener', 'noreferrer']:
+                    if val not in rel:
+                        rel.append(val)
+                        changed = True
+                
+                if changed:
+                    a['rel'] = rel
+                    
+                # Force target="_blank" for external links
+                if a.get('target') != '_blank':
+                    a['target'] = '_blank'
+
+def generate_sitemap(urls):
+    """
+    Generate sitemap.xml
+    urls: list of dicts { 'loc': url, 'lastmod': date, 'priority': float, 'changefreq': str }
+    """
+    print(f"Generating sitemap with {len(urls)} URLs...")
+    
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>']
+    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    
+    for u in urls:
+        xml.append('    <url>')
+        xml.append(f"        <loc>{DOMAIN}{u['loc']}</loc>")
+        xml.append(f"        <lastmod>{u['lastmod']}</lastmod>")
+        xml.append(f"        <changefreq>{u['changefreq']}</changefreq>")
+        xml.append(f"        <priority>{u['priority']}</priority>")
+        xml.append('    </url>')
+        
+    xml.append('</urlset>')
+    
+    with open(os.path.join(PROJECT_ROOT, 'sitemap.xml'), 'w', encoding='utf-8') as f:
+        f.write('\n'.join(xml))
+
 def build():
     print("Starting build process...")
+    
+    sitemap_urls = []
+    today = datetime.now().strftime('%Y-%m-%d')
     
     # 1. Parse index.html
     index_soup = get_soup(INDEX_FILE)
@@ -263,6 +347,14 @@ def build():
         post_meta = get_post_metadata(soup, filename)
         post_meta['filepath'] = filepath
         posts.append(post_meta)
+        
+        # Add to sitemap
+        sitemap_urls.append({
+            'loc': post_meta['url'],
+            'lastmod': post_meta['date'], # Use post date as lastmod
+            'changefreq': 'weekly',
+            'priority': 0.7
+        })
     
     # Sort posts by date
     posts.sort(key=lambda x: x['date'], reverse=True)
@@ -273,6 +365,9 @@ def build():
         
         # Phase 2: Head Reconstruction
         reconstruct_head(soup, post, favicons)
+        
+        # Process Content Links (External Link Protection)
+        process_content_links(soup)
         
         # --- Phase 3: Injection ---
         
@@ -336,8 +431,12 @@ def build():
     for filepath in generic_files:
         filename = os.path.basename(filepath)
         is_root_index = (filename == "index.html" and os.path.dirname(filepath) == PROJECT_ROOT)
+        
         if is_root_index: 
-            continue # Handle root index last
+            # We skip processing root index here because we handle it separately at the end
+            # BUT we still need to add it to the sitemap later (which we do manually)
+            continue 
+            
         if "google" in filename: continue
         
         print(f"Processing {filename}...")
@@ -359,9 +458,39 @@ def build():
             'title': title,
             'description': desc,
             'url': url_path,
-            'date': "2026-01-01",
+            'date': today, # Use build date for generic pages
             'category': 'Page'
         }
+        
+        # Add to sitemap
+        priority = 0.5
+        changefreq = 'monthly'
+        
+        if url_path == '/blog': # Blog Index
+            priority = 0.8
+            changefreq = 'daily'
+            
+            # Special handling for Blog Index: Update Article Grid
+            # Find the grid container
+            blog_grid = soup.find('div', class_=lambda x: x and 'grid' in x and 'md:grid-cols-2' in x)
+            if blog_grid:
+                print("Updating Blog Index grid...")
+                blog_grid.clear()
+                for p in posts:
+                    # Create card (maybe slightly different style for blog index? using same for now)
+                    # The blog index uses a slightly different card structure in the example, 
+                    # but create_article_card generates a standard card. 
+                    # Let's use create_article_card but we might need to adjust styles if they differ significantly.
+                    # Looking at source, they are very similar "glass-card".
+                    card = create_article_card(soup, p)
+                    blog_grid.append(card)
+            
+        sitemap_urls.append({
+            'loc': url_path,
+            'lastmod': today,
+            'changefreq': changefreq,
+            'priority': priority
+        })
         
         reconstruct_head(soup, meta, favicons)
         
@@ -384,10 +513,22 @@ def build():
         'title': index_soup.title.string if index_soup.title else "FBMai",
         'description': index_soup.find('meta', attrs={'name': 'description'})['content'] if index_soup.find('meta', attrs={'name': 'description'}) else "",
         'url': "/",
-        'date': "2026-01-01",
+        'date': today,
         'category': 'Page'
     }
+    
+    # Add root to sitemap
+    sitemap_urls.append({
+        'loc': '/',
+        'lastmod': today,
+        'changefreq': 'daily',
+        'priority': 1.0
+    })
+    
     reconstruct_head(index_soup, index_meta, favicons)
+    
+    # Process Content Links for Index
+    process_content_links(index_soup)
 
     # Find Latest Articles section
     latest_section = None
@@ -407,6 +548,9 @@ def build():
                 
     with open(INDEX_FILE, 'w', encoding='utf-8') as f:
         f.write(str(index_soup))
+        
+    # 6. Generate Sitemap
+    generate_sitemap(sitemap_urls)
         
     print("Build complete.")
 

@@ -19,7 +19,7 @@ class AutoConfig:
         self.root_dir = root_dir
         self.base_url = None
         self.keywords = []
-        self.ignore_paths = ['.git', 'node_modules', '__pycache__']
+        self.ignore_paths = ['.git', 'node_modules', '__pycache__', 'MasterTool']
         self.ignore_urls_prefixes = ['/go/', 'javascript:', 'mailto:', '#']
         self.ignore_urls_substrings = ['cdn-cgi']
         self.ignore_files = ['404.html']
@@ -212,11 +212,19 @@ class Auditor:
                             self.dead_links.append(href)
                     else:
                         self.external_links.add(href)
-                        # Check rel attributes
+                        # Check rel attributes for protection (nofollow, noopener, noreferrer)
                         rel = a.get('rel', [])
-                        if 'noopener' not in rel:
-                            # Not strictly penalized in scoring summary, but good practice
-                            pass 
+                        if isinstance(rel, str): rel = rel.split()
+                        
+                        missing = []
+                        if 'nofollow' not in rel: missing.append('nofollow')
+                        if 'noopener' not in rel: missing.append('noopener')
+                        if 'noreferrer' not in rel: missing.append('noreferrer')
+                        
+                        if missing:
+                            self.log('WARN', f"{rel_path}: External link {href} missing protection: {', '.join(missing)} -> Risk of weight loss")
+                            # We don't deduct points heavily, but warn about it.
+                        
                     continue
 
                 # Internal Links
@@ -248,9 +256,13 @@ class Auditor:
                 headers = {'User-Agent': 'Mozilla/5.0 (compatible; SEOAuditor/1.0)'}
                 response = requests.head(url, headers=headers, timeout=5, allow_redirects=True)
                 if response.status_code >= 400:
-                    return url, response.status_code
+                    return url, f"Status {response.status_code}", True # True means deduct points
+            except requests.exceptions.Timeout:
+                return url, "Timeout (Network Limit?)", False # False means don't deduct
+            except requests.exceptions.ConnectionError:
+                return url, "Connection Error (Network Limit?)", False
             except Exception as e:
-                return url, str(e)
+                return url, str(e), False
             return None
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
@@ -258,9 +270,12 @@ class Auditor:
             for future in concurrent.futures.as_completed(future_to_url):
                 result = future.result()
                 if result:
-                    url, error = result
-                    self.log('ERROR', f"Broken External Link: {url} (Status/Error: {error}) (-5 pts)")
-                    self.score -= 5
+                    url, error, should_deduct = result
+                    if should_deduct:
+                        self.log('ERROR', f"Broken External Link: {url} ({error}) (-5 pts)")
+                        self.score -= 5
+                    else:
+                        self.log('WARN', f"External Link Unreachable: {url} ({error}) - Skipped deduction (Likely Network Issue)")
 
     def analyze_structure(self):
         # Identify orphans
